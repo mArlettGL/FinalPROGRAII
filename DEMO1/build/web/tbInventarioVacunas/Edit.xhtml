@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbInventarioVacunasEditDlg" widgetVar="TbInventarioVacunasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTbInventarioVacunasTitle}">
+            <h:form id="TbInventarioVacunasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbInventarioVacunasController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_idInventarioVacuna}" for="idInventarioVacuna" />
+                        <p:inputText id="idInventarioVacuna" value="#{tbInventarioVacunasController.selected.idInventarioVacuna}" title="#{bundle.EditTbInventarioVacunasTitle_idInventarioVacuna}" required="true" requiredMessage="#{bundle.EditTbInventarioVacunasRequiredMessage_idInventarioVacuna}"/>
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_fechaCompra}" for="fechaCompra" />
+                        <p:calendar id="fechaCompra" pattern="MM/dd/yyyy" value="#{tbInventarioVacunasController.selected.fechaCompra}" title="#{bundle.EditTbInventarioVacunasTitle_fechaCompra}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_fechaCaducidad}" for="fechaCaducidad" />
+                        <p:calendar id="fechaCaducidad" pattern="MM/dd/yyyy" value="#{tbInventarioVacunasController.selected.fechaCaducidad}" title="#{bundle.EditTbInventarioVacunasTitle_fechaCaducidad}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_numeroLote}" for="numeroLote" />
+                        <p:inputText id="numeroLote" value="#{tbInventarioVacunasController.selected.numeroLote}" title="#{bundle.EditTbInventarioVacunasTitle_numeroLote}" />
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_precioLote}" for="precioLote" />
+                        <p:inputText id="precioLote" value="#{tbInventarioVacunasController.selected.precioLote}" title="#{bundle.EditTbInventarioVacunasTitle_precioLote}" />
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_cantidadLote}" for="cantidadLote" />
+                        <p:inputText id="cantidadLote" value="#{tbInventarioVacunasController.selected.cantidadLote}" title="#{bundle.EditTbInventarioVacunasTitle_cantidadLote}" />
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_idTipoVacuna}" for="idTipoVacuna" />
+                        <p:selectOneMenu id="idTipoVacuna" value="#{tbInventarioVacunasController.selected.idTipoVacuna}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{catTipoVacunaController.itemsAvailableSelectOne}"
+                                           var="idTipoVacunaItem"
+                                           itemValue="#{idTipoVacunaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTbInventarioVacunasLabel_idLaboratorio}" for="idLaboratorio" />
+                        <p:selectOneMenu id="idLaboratorio" value="#{tbInventarioVacunasController.selected.idLaboratorio}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{catLaboratorioController.itemsAvailableSelectOne}"
+                                           var="idLaboratorioItem"
+                                           itemValue="#{idLaboratorioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbInventarioVacunasController.update}" value="#{bundle.Save}" update="display,:TbInventarioVacunasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TbInventarioVacunasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbInventarioVacunasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

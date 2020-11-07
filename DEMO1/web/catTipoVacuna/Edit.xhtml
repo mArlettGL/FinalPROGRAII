@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CatTipoVacunaEditDlg" widgetVar="CatTipoVacunaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCatTipoVacunaTitle}">
+            <h:form id="CatTipoVacunaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{catTipoVacunaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCatTipoVacunaLabel_idTipoVacuna}" for="idTipoVacuna" />
+                        <p:inputText id="idTipoVacuna" value="#{catTipoVacunaController.selected.idTipoVacuna}" title="#{bundle.EditCatTipoVacunaTitle_idTipoVacuna}" required="true" requiredMessage="#{bundle.EditCatTipoVacunaRequiredMessage_idTipoVacuna}"/>
+                        <p:outputLabel value="#{bundle.EditCatTipoVacunaLabel_nombreVacuna}" for="nombreVacuna" />
+                        <p:inputText id="nombreVacuna" value="#{catTipoVacunaController.selected.nombreVacuna}" title="#{bundle.EditCatTipoVacunaTitle_nombreVacuna}" />
+                        <p:outputLabel value="#{bundle.EditCatTipoVacunaLabel_efectosAdversos}" for="efectosAdversos" />
+                        <p:inputText id="efectosAdversos" value="#{catTipoVacunaController.selected.efectosAdversos}" title="#{bundle.EditCatTipoVacunaTitle_efectosAdversos}" />
+                        <p:outputLabel value="#{bundle.EditCatTipoVacunaLabel_modoAlmacen}" for="modoAlmacen" />
+                        <p:inputText id="modoAlmacen" value="#{catTipoVacunaController.selected.modoAlmacen}" title="#{bundle.EditCatTipoVacunaTitle_modoAlmacen}" />
+                        <p:outputLabel value="#{bundle.EditCatTipoVacunaLabel_cantidadAplicaciones}" for="cantidadAplicaciones" />
+                        <p:inputText id="cantidadAplicaciones" value="#{catTipoVacunaController.selected.cantidadAplicaciones}" title="#{bundle.EditCatTipoVacunaTitle_cantidadAplicaciones}" />
+                        <p:outputLabel value="#{bundle.EditCatTipoVacunaLabel_idLaboratorio}" for="idLaboratorio" />
+                        <p:selectOneMenu id="idLaboratorio" value="#{catTipoVacunaController.selected.idLaboratorio}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{catLaboratorioController.itemsAvailableSelectOne}"
+                                           var="idLaboratorioItem"
+                                           itemValue="#{idLaboratorioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{catTipoVacunaController.update}" value="#{bundle.Save}" update="display,:CatTipoVacunaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CatTipoVacunaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CatTipoVacunaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

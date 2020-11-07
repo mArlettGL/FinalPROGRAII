@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbPersonaCreateDlg" widgetVar="TbPersonaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTbPersonaTitle}">
+            <h:form id="TbPersonaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbPersonaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_cui}" for="cui" />
+                        <p:inputText id="cui" value="#{tbPersonaController.selected.cui}" title="#{bundle.CreateTbPersonaTitle_cui}" required="true" requiredMessage="#{bundle.CreateTbPersonaRequiredMessage_cui}"/>
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tbPersonaController.selected.nombre}" title="#{bundle.CreateTbPersonaTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy" value="#{tbPersonaController.selected.fechaNacimiento}" title="#{bundle.EditTbPersonaTitle_fechaNacimiento}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{tbPersonaController.selected.direccion}" title="#{bundle.CreateTbPersonaTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_telefonoMovil}" for="telefonoMovil" />
+                        <p:inputText id="telefonoMovil" value="#{tbPersonaController.selected.telefonoMovil}" title="#{bundle.CreateTbPersonaTitle_telefonoMovil}" />
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_telefonoCasa}" for="telefonoCasa" />
+                        <p:inputText id="telefonoCasa" value="#{tbPersonaController.selected.telefonoCasa}" title="#{bundle.CreateTbPersonaTitle_telefonoCasa}" />
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_nombreEncargado}" for="nombreEncargado" />
+                        <p:inputText id="nombreEncargado" value="#{tbPersonaController.selected.nombreEncargado}" title="#{bundle.CreateTbPersonaTitle_nombreEncargado}" />
+                        <p:outputLabel value="#{bundle.CreateTbPersonaLabel_cuiEncargado}" for="cuiEncargado" />
+                        <p:inputText id="cuiEncargado" value="#{tbPersonaController.selected.cuiEncargado}" title="#{bundle.CreateTbPersonaTitle_cuiEncargado}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbPersonaController.create}" value="#{bundle.Save}" update="display,:TbPersonaListForm:datalist,:growl" oncomplete="handleSubmit(args,'TbPersonaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbPersonaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

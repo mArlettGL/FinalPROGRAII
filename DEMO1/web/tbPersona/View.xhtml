@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbPersonaViewDlg" widgetVar="TbPersonaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTbPersonaTitle}">
+            <h:form id="TbPersonaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbPersonaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_cui}"/>
+                        <h:outputText value="#{tbPersonaController.selected.cui}" title="#{bundle.ViewTbPersonaTitle_cui}"/>
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_nombre}"/>
+                        <h:outputText value="#{tbPersonaController.selected.nombre}" title="#{bundle.ViewTbPersonaTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{tbPersonaController.selected.fechaNacimiento}" title="#{bundle.ViewTbPersonaTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_direccion}"/>
+                        <h:outputText value="#{tbPersonaController.selected.direccion}" title="#{bundle.ViewTbPersonaTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_telefonoMovil}"/>
+                        <h:outputText value="#{tbPersonaController.selected.telefonoMovil}" title="#{bundle.ViewTbPersonaTitle_telefonoMovil}"/>
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_telefonoCasa}"/>
+                        <h:outputText value="#{tbPersonaController.selected.telefonoCasa}" title="#{bundle.ViewTbPersonaTitle_telefonoCasa}"/>
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_nombreEncargado}"/>
+                        <h:outputText value="#{tbPersonaController.selected.nombreEncargado}" title="#{bundle.ViewTbPersonaTitle_nombreEncargado}"/>
+                        <h:outputText value="#{bundle.ViewTbPersonaLabel_cuiEncargado}"/>
+                        <h:outputText value="#{tbPersonaController.selected.cuiEncargado}" title="#{bundle.ViewTbPersonaTitle_cuiEncargado}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TbPersonaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

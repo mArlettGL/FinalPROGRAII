@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Registro_Gubernamental_VacunaCOVID-19</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body style="background-color: deepskyblue">
+        
+        <div style="background-color: #ffffff">
+        <h1 style="font-family:Verdana">
+            Registro Gubernamental 
+        </h1>
+        </div>
+        <div id="fondo1">
+            <h:graphicImage library="imagenes" name="fondo1.jpg" alt="fondo1" width="1333px" height="500px"/>    
+        </div>
+        <div id="fondo2">
+            <h:graphicImage library="imagenes" name="fondo2.jpg" alt="imagen3" width="70px" height="70px"/>    
+        </div>
+        <div id="fondo3">
+            <h:graphicImage library="imagenes" name="imagen4.png" alt="imagen4"/>    
+        </div>
+        <div id="index">
+        <ul>
+        <br />
+        <h:link outcome="/catLaboratorio/List" value="Catálogo de Laboratorio" style="color: white"/>
+        <br />
+        <h:link outcome="/catPais/List" value="Catalogo de Pais" style="color: white"/>
+        <br />
+        <h:link outcome="/catTipoVacuna/List" value="Catalogo tipo de Vacuna" style="color: white"/>
+        <br />
+        <h:link outcome="/tbAplicacionDosis/List" value="Dosis de Aplicación para Vacuna" style="color: white"/>
+        <br />
+        <h:link outcome="/tbInventarioVacunas/List" value="Inventario de Vacuna" style="color: white"/>
+        <br />
+        <h:link outcome="/tbPersona/List" value="Registro de Pacientes" style="color: white"/>
+        </ul>
+            <div id="btnintro">
+             <button style='width:150px; height:25px' onclick="location.href='http://localhost:8080/DEMO1/faces/instrucciones.xhtml'">instrucciones</button>
+        </div>
+        </div>
+    </h:body>
+
+
+</html>
+

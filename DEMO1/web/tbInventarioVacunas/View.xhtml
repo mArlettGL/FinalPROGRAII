@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbInventarioVacunasViewDlg" widgetVar="TbInventarioVacunasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTbInventarioVacunasTitle}">
+            <h:form id="TbInventarioVacunasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbInventarioVacunasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_idInventarioVacuna}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.idInventarioVacuna}" title="#{bundle.ViewTbInventarioVacunasTitle_idInventarioVacuna}"/>
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_fechaCompra}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.fechaCompra}" title="#{bundle.ViewTbInventarioVacunasTitle_fechaCompra}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_fechaCaducidad}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.fechaCaducidad}" title="#{bundle.ViewTbInventarioVacunasTitle_fechaCaducidad}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_numeroLote}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.numeroLote}" title="#{bundle.ViewTbInventarioVacunasTitle_numeroLote}"/>
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_precioLote}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.precioLote}" title="#{bundle.ViewTbInventarioVacunasTitle_precioLote}"/>
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_cantidadLote}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.cantidadLote}" title="#{bundle.ViewTbInventarioVacunasTitle_cantidadLote}"/>
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_idTipoVacuna}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.idTipoVacuna}" title="#{bundle.ViewTbInventarioVacunasTitle_idTipoVacuna}"/>
+                        <h:outputText value="#{bundle.ViewTbInventarioVacunasLabel_idLaboratorio}"/>
+                        <h:outputText value="#{tbInventarioVacunasController.selected.idLaboratorio}" title="#{bundle.ViewTbInventarioVacunasTitle_idLaboratorio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TbInventarioVacunasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

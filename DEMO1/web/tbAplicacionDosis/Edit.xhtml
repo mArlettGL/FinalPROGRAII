@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbAplicacionDosisEditDlg" widgetVar="TbAplicacionDosisEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTbAplicacionDosisTitle}">
+            <h:form id="TbAplicacionDosisEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbAplicacionDosisController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTbAplicacionDosisLabel_idAplicacion}" for="idAplicacion" />
+                        <p:inputText id="idAplicacion" value="#{tbAplicacionDosisController.selected.idAplicacion}" title="#{bundle.EditTbAplicacionDosisTitle_idAplicacion}" required="true" requiredMessage="#{bundle.EditTbAplicacionDosisRequiredMessage_idAplicacion}"/>
+                        <p:outputLabel value="#{bundle.EditTbAplicacionDosisLabel_fechaAplicacion}" for="fechaAplicacion" />
+                        <p:calendar id="fechaAplicacion" pattern="MM/dd/yyyy" value="#{tbAplicacionDosisController.selected.fechaAplicacion}" title="#{bundle.EditTbAplicacionDosisTitle_fechaAplicacion}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTbAplicacionDosisLabel_cantidadAplicada}" for="cantidadAplicada" />
+                        <p:inputText id="cantidadAplicada" value="#{tbAplicacionDosisController.selected.cantidadAplicada}" title="#{bundle.EditTbAplicacionDosisTitle_cantidadAplicada}" />
+                        <p:outputLabel value="#{bundle.EditTbAplicacionDosisLabel_idInventarioVacuna}" for="idInventarioVacuna" />
+                        <p:selectOneMenu id="idInventarioVacuna" value="#{tbAplicacionDosisController.selected.idInventarioVacuna}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tbInventarioVacunasController.itemsAvailableSelectOne}"
+                                           var="idInventarioVacunaItem"
+                                           itemValue="#{idInventarioVacunaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTbAplicacionDosisLabel_cui}" for="cui" />
+                        <p:selectOneMenu id="cui" value="#{tbAplicacionDosisController.selected.cui}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{tbPersonaController.itemsAvailableSelectOne}"
+                                           var="cuiItem"
+                                           itemValue="#{cuiItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbAplicacionDosisController.update}" value="#{bundle.Save}" update="display,:TbAplicacionDosisListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TbAplicacionDosisEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbAplicacionDosisEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

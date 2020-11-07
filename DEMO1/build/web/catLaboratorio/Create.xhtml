@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CatLaboratorioCreateDlg" widgetVar="CatLaboratorioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCatLaboratorioTitle}">
+            <h:form id="CatLaboratorioCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{catLaboratorioController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCatLaboratorioLabel_idLaboratorio}" for="idLaboratorio" />
+                        <p:inputText id="idLaboratorio" value="#{catLaboratorioController.selected.idLaboratorio}" title="#{bundle.CreateCatLaboratorioTitle_idLaboratorio}" required="true" requiredMessage="#{bundle.CreateCatLaboratorioRequiredMessage_idLaboratorio}"/>
+                        <p:outputLabel value="#{bundle.CreateCatLaboratorioLabel_nombreLaboratorio}" for="nombreLaboratorio" />
+                        <p:inputText id="nombreLaboratorio" value="#{catLaboratorioController.selected.nombreLaboratorio}" title="#{bundle.CreateCatLaboratorioTitle_nombreLaboratorio}" />
+                        <p:outputLabel value="#{bundle.CreateCatLaboratorioLabel_idPais}" for="idPais" />
+                        <p:selectOneMenu id="idPais" value="#{catLaboratorioController.selected.idPais}" >
+                            <f:selectItems value="#{catPaisController.itemsAvailableSelectOne}"
+                                           var="idPaisItem"
+                                           itemValue="#{idPaisItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{catLaboratorioController.create}" value="#{bundle.Save}" update="display,:CatLaboratorioListForm:datalist,:growl" oncomplete="handleSubmit(args,'CatLaboratorioCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CatLaboratorioCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
